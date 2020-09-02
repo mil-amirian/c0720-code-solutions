@@ -48,6 +48,5 @@ console.log(accountBalance);
 
 const composite = traits.reduce((composite, traits) => {
   return Object.assign(composite, traits);
-
 }, {});
 console.log(composite);
