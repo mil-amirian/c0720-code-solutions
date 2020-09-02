@@ -46,6 +46,8 @@ const withdrawal = accountTrans.withdrawal.reduce((calcs), initialValue);
 const accountBalance = deposit - withdrawal;
 console.log(accountBalance);
 
-const composite = {};
-Object.assign(composite, traits);
+const composite = traits.reduce((composite, traits) => {
+  return Object.assign(composite, traits);
+
+}, {});
 console.log(composite);
