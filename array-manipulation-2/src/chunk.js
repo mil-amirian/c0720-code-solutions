@@ -1,17 +1,22 @@
 /* eslint-disable no-unused-vars */
 function chunk(array, size) {
-//   const copyArr = [];
-//   const secondArr = [];
-//   finalArr = [];
-//   for (let i = 0; i < array.length; i++) {
-//     copyArr.push(array[i]);
-//   }
+  const copyArr = [];
+  const secondArr = [];
+  // finalArr = [];
 
-  //   for (let j = 0; j < size; j++) {
-  //     secondArr.push(copyArr[j]);
-  //   }
+  let i = 0;
+  for (; i < array.length; i++) {
+    for (let j = 0; j < size; j++) {
+      copyArr.push(array[j]);
+      i += size;
+      secondArr.push(copyArr);
+    }
+  }
 
-  //   finalArr.push(secondArr);
-  //   console.log(finalArr);
+  // for (let j = 0; j < size; j++) {
+  //   secondArr.push(copyArr[j]);
+  // }
+
+  // console.log(secondArr);
 
 }
