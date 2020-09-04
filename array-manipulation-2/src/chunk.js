@@ -1,22 +1,11 @@
 /* eslint-disable no-unused-vars */
 function chunk(array, size) {
-  const copyArr = [];
-  const secondArr = [];
-  // finalArr = [];
 
-  let i = 0;
-  for (; i < array.length; i++) {
-    for (let j = 0; j < size; j++) {
-      copyArr.push(array[j]);
-      i += size;
-      secondArr.push(copyArr);
-    }
+  const chunkedArr = [];
+  for (let i = 0; i < array.length; i += size) {
+    const currentChunk = array.slice(i, i + size);
+    chunkedArr.push(currentChunk);
   }
-
-  // for (let j = 0; j < size; j++) {
-  //   secondArr.push(copyArr[j]);
-  // }
-
-  // console.log(secondArr);
+  return chunkedArr;
 
 }
