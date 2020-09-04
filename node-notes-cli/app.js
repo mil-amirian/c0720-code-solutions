@@ -24,14 +24,10 @@ const create = () => {
 };
 
 const update = () => {
-  for (const key in notes) {
-    if (userNoteOne === key) {
-      notes[key] = userNoteTwo;
-      fs.writeFile('data.json', JSON.stringify(dataJson, null, 2), err => {
-        if (err) throw err;
-      });
-    }
-  }
+  notes[userNoteOne] = userNoteTwo;
+  fs.writeFile('data.json', JSON.stringify(dataJson, null, 2), err => {
+    if (err) throw err;
+  });
 };
 
 const itemDelete = () => {
