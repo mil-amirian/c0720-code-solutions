@@ -1,5 +1,6 @@
 
 const express = require('express');
+const path = require('path');
 const app = express();
 
 const students = [
@@ -16,6 +17,8 @@ const students = [
     grade: 9004
   }
 ];
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/grades', (req, res) => {
   res.json(students);
