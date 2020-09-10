@@ -17,7 +17,8 @@ app.post('/api/grades', (req, res) => {
   req.body.id = nextId;
   nextId++;
   grades.push(reqBody);
-  res.json(grades);
+  const currentEntry = grades[grades.length - 1];
+  res.json(currentEntry);
 
 });
 
