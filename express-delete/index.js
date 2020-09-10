@@ -23,10 +23,15 @@ app.get('/api/grades', (req, res) => {
   res.json(grades);
 });
 
-app.delete('/api/grades/:gradesIndex', (req, res) => {
-  const requestedIndexValue = req.params.gradesIndex - 1;
-  grades.splice(requestedIndexValue, requestedIndexValue + 1);
-  res.status(204).json(grades);
+app.delete('/api/grades/:id', (req, res) => {
+  const userRequestId = parseInt(req.params.id);
+  const index = grades.findIndex(studentId => studentId.id === userRequestId);
+  if (index === -1) {
+    res.sendStatus(404);
+  } else {
+    grades.splice(index, 1);
+    res.sendStatus(204);
+  }
 });
 
 app.listen(3000, () => {
