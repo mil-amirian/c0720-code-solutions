@@ -3,26 +3,25 @@ const app = express();
 const fs = require('fs');
 const useJson = express.json();
 const jsonData = require('./data.json');
-let resArr = [];
 
 app.use(useJson);
 
 const pushJsonIntoArray = () => {
+  const resArr = [];
   const eachNoteArr = Object.entries(jsonData.notes);
   for (let i = 0; i < eachNoteArr.length; i++) {
     resArr.push(eachNoteArr[i][1]);
   }
+  return resArr;
 };
 
 app.get('/api/notes', (req, res) => {
-  resArr = [];
-  pushJsonIntoArray();
-  res.status(200).send(resArr);
+  res.status(200).send(pushJsonIntoArray());
 });
 
 app.get('/api/notes/:id', (req, res) => {
-  resArr = [];
-  pushJsonIntoArray();
+  const resArr = pushJsonIntoArray();
+
   const userRequestId = parseInt(req.params.id);
   if (userRequestId <= 0) {
     res.status(400).send({ error: 'id must be a positive integer' });
@@ -43,10 +42,10 @@ app.get('/api/notes/:id', (req, res) => {
 app.post('/api/notes', (req, res) => {
   const content = req.body;
 
-  if (Object.keys(content).length === 0) {
+  if (Object.keys(content).length === 0 || !('content' in req.body)) {
     res.status(400).send({ error: 'Content is a required field' });
 
-  } else if (content) {
+  } else if ('content' in content) {
     jsonData.notes[jsonData.nextId] = content;
     jsonData.notes[jsonData.nextId].id = jsonData.nextId;
     jsonData.nextId++;
@@ -66,14 +65,13 @@ app.delete('/api/notes/:id', (req, res) => {
   const userRequestId = parseInt(req.params.id);
   if (userRequestId <= 0) {
     res.status(400).send({ error: 'id must be a positive integer' });
-  } else if (userRequestId < jsonData.nextId) {
+  } else if (userRequestId < jsonData.nextId && jsonData.notes[userRequestId] !== undefined) {
     delete jsonData.notes[userRequestId];
     res.sendStatus(204);
     fs.writeFile('data.json', JSON.stringify(jsonData, null, 2), err => {
       if (err) {
         console.error(err);
         res.status(500).send({ error: 'An unexpected error occured' });
-
       }
     });
   } else if (!userRequestId) {
@@ -88,7 +86,7 @@ app.put('/api/notes/:id', (req, res) => {
   const userRequestId = parseInt(req.params.id);
   const requestBody = req.body;
 
-  if (userRequestId <= 0 || Object.keys(requestBody).length === 0) {
+  if (userRequestId <= 0 || Object.keys(requestBody).length === 0 || !('content' in req.body)) {
     res.status(400).send({ error: 'id must be a positive integer' });
   } else if (!jsonData.notes[req.params.id] && requestBody) {
     res.status(404).send({ error: `cannot find note with id ${userRequestId}` });
