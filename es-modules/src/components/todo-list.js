@@ -1,5 +1,4 @@
 import { createElement } from '../lib';
-// const { createElement } = require('../lib');
 
 export default class TodoList {
   constructor(onToggle) {
@@ -49,5 +48,3 @@ export default class TodoList {
     return todoList;
   }
 }
-
-// export const todoList = TodoList;

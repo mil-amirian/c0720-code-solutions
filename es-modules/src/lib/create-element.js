@@ -1,5 +1,4 @@
 import toArray from './to-array';
-// const toArray = require('./to-array');
 
 export default function createElement(tagName, attributes, children = []) {
   const parent = document.createElement(tagName);
@@ -14,5 +13,3 @@ export default function createElement(tagName, attributes, children = []) {
   });
   return parent;
 }
-
-// export const CreateElement = createElement;

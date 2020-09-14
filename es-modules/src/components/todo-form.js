@@ -1,5 +1,4 @@
 import { createElement } from '../lib';
-// const { createElement } = require('../lib');
 
 export default class TodoForm {
   constructor(onSubmit) {
@@ -44,5 +43,3 @@ export default class TodoForm {
     return this.element;
   }
 }
-
-// export const todoForm = TodoForm;

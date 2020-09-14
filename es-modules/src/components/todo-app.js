@@ -51,5 +51,3 @@ export default class TodoApp {
     this.onUpdate({ nextId, todos });
   }
 }
-
-// export const todoApp = TodoApp;
