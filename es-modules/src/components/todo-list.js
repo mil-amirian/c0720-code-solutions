@@ -1,4 +1,4 @@
-import createElement from '../lib';
+import { createElement } from '../lib';
 // const { createElement } = require('../lib');
 
 export default class TodoList {
