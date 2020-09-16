@@ -4,39 +4,47 @@ import ReactDOM from 'react-dom';
 class RenderButton extends React.Component {
   constructor(props) {
     super(props);
-    this.clickCount = 0;
+    this.state = { clickCount: 0 };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
-    this.clickCount++;
-    if (this.clickCount === 3) {
-      event.target.style.backgroundColor = 'purple';
-      event.target.style.color = 'white';
-    } else if (this.clickCount === 6) {
-      event.target.style.backgroundColor = 'mediumOrchid';
-      event.target.style.color = 'white';
-    } else if (this.clickCount === 9) {
-      event.target.style.backgroundColor = 'crimson';
-      event.target.style.color = 'white';
-    } else if (this.clickCount === 12) {
-      event.target.style.backgroundColor = 'orange';
-      event.target.style.color = 'black';
-    } else if (this.clickCount === 15) {
-      event.target.style.backgroundColor = 'yellow';
-      event.target.style.color = 'black';
-    } else if (this.clickCount === 18) {
-      event.target.style.backgroundColor = 'white';
-      event.target.style.color = 'black';
-    }
+  handleClick() {
+    this.setState(state => ({
+      clickCount: state.clickCount + 1
+    }));
   }
 
   render() {
-    return <button onClick={this.handleClick}>
-          Hot Button
-    </button>;
+    if (this.state.clickCount === 3) {
+      return <button className='purple' onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    } else if (this.state.clickCount === 6) {
+      return <button className='orchid' onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    } else if (this.state.clickCount === 9) {
+      return <button className='crimson' onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    } else if (this.state.clickCount === 12) {
+      return <button className='orange' onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    } else if (this.state.clickCount === 15) {
+      return <button className='yellow' onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    } else if (this.state.clickCount === 18) {
+      return <button className='white' onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    } else {
+      return <button onClick={this.handleClick}>
+                Hot Button
+      </button>;
+    }
   }
-
 }
 
 const button = <RenderButton />;
