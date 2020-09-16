@@ -37,6 +37,4 @@ class Toggle extends React.Component {
 
 }
 
-const button = <Toggle />;
-
-export default button;
+export default Toggle;

@@ -1,7 +1,9 @@
 import ReactDOM from 'react-dom';
-import button from './toggle-switch';
+import React from 'react';
+import Toggle from './toggle-switch';
 
 const parentElementForButton = document.getElementById('root');
+const button = <Toggle />;
 
 ReactDOM.render(
   button,
