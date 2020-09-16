@@ -99,6 +99,8 @@ const startGame = () => {
   resetGame();
 };
 
+startGame();
+
 const dealCards = () => {
   shuffleDeck();
   for (let j = 0; j < players.length; j++) {
@@ -131,5 +133,3 @@ const resetGame = () => {
     players[i][`${i + 1}`].hand = [];
   }
 };
-
-startGame();
