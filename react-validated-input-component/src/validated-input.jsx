@@ -4,9 +4,18 @@ class ValidateInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      entry: 'start'
+      entry: 'start',
+      userPassword: ''
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    this.setState({
+      userPassword: event.target.value
+    });
+    event.preventDefault();
   }
 
   handleChange(event) {
@@ -28,10 +37,10 @@ class ValidateInput extends React.Component {
   render() {
     if (this.state.entry === 'empty') {
       return (
-        <form className="container">
+        <form className="container" onSubmit={this.handleSubmit}>
           <label>Password</label>
           <div className="input-container">
-            <input type="password" className="input" onChange={this.handleChange} />
+            <input type="password" className="input" value={this.state.handleSubmit} onChange={this.handleChange}/>
             <input type="submit" value="Sign In"/>
             <img src="./wrong.png" className="wrong" />
             <img src="./right.png" className="right hidden"/>
@@ -43,10 +52,10 @@ class ValidateInput extends React.Component {
       );
     } else if (this.state.entry === 'short') {
       return (
-        <form className="container">
+        <form className="container" onSubmit={this.handleSubmit}>
           <label>Password</label>
           <div className="input-container">
-            <input type="password" className="input" onChange={this.handleChange} />
+            <input type="password" className="input" value={this.state.handleSubmit} onChange={this.handleChange}/>
             <input type="submit" value="Sign In"/>
             <img src="./wrong.png" className="wrong" />
             <img src="./right.png" className="right hidden"/>
@@ -58,10 +67,10 @@ class ValidateInput extends React.Component {
       );
     } else if (this.state.entry === 'pass') {
       return (
-        <form className="container">
+        <form className="container" onSubmit={this.handleSubmit}>
           <label>Password</label>
           <div className="input-container">
-            <input type="password" className="input" onChange={this.handleChange} />
+            <input type="password" className="input" value={this.state.handleSubmit} onChange={this.handleChange} />
             <input type="submit" value="Sign In"/>
             <img src="./wrong.png" className="wrong hidden" />
             <img src="./right.png" className="right"/>
@@ -73,10 +82,10 @@ class ValidateInput extends React.Component {
       );
     } else {
       return (
-        <form className="container">
+        <form className="container" onSubmit={this.handleSubmit}>
           <label>Password</label>
           <div className="input-container">
-            <input type="password" className="input" onChange={this.handleChange} />
+            <input type="password" className="input" value={this.state.handleSubmit} onChange={this.handleChange}/>
             <input type="submit" value="Sign In"/>
             <img src="./wrong.png" className="wrong hidden" />
             <img src="./right.png" className="right hidden"/>
