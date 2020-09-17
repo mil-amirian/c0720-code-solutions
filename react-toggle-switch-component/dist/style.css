@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+}
+
+.outer-off {
+  width: 100px;
+  height: 50px;
+  background-color: grey;
+  border: solid 2px black;
+}
+
+.inner-off {
+  width: 25px;
+  height: 50px;
+  background-color: white;
+  position: relative;
+  left: 75px;
+}
+
+.outer-on {
+  width: 100px;
+  height: 50px;
+  background-color: limegreen;
+  border: solid 2px black;
+}
+
+.inner-on {
+  width: 25px;
+  height: 50px;
+  background-color: white;
+  position: relative;
+  left: 0;
+}
+
+.state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
