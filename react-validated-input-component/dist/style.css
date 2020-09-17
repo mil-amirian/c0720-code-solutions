@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 0 2rem;
+}
+
+label {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.status-wrong,
+.status-short {
+  font-family: Arial, Helvetica, sans-serif;
+  color: red;
+}
+
+.wrong,
+.right {
+  margin-left: 1rem;
+}
+
+.hidden {
+  display: none;
+}
