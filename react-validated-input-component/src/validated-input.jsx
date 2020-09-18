@@ -22,6 +22,9 @@ class ValidateInput extends React.Component {
   }
 
   handleChange(event) {
+    this.setState({
+      userPassword: event.target.value
+    });
     if (event.target.value.length >= 8) {
       this.setState({
         entry: 'pass'
@@ -42,7 +45,7 @@ class ValidateInput extends React.Component {
       <form className="container" onSubmit={this.handleSubmit}>
         <label>Password</label>
         <div className="input-container">
-          <input type="password" className="input" value={this.state.handleSubmit} onChange={this.handleChange}/>
+          <input type="password" className="input" value={this.state.userPassword} onChange={this.handleChange}/>
           <input type="submit" value="Sign In"/>
           <this.ConditionalImages />
         </div>
