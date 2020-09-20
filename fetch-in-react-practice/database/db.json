@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "Learn to code.",
+      "isCompleted": true
+    },
+    {
+      "id": 3,
+      "task": "Build projects.",
+      "isCompleted": false
+    },
+    {
+      "id": 7,
+      "task": "Get a job.",
+      "isCompleted": false
+    },
+    {
+      "task": "Make lots of money",
+      "isCompleted": false,
+      "id": 8
+    }
+  ]
+}
