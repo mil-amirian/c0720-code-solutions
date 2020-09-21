@@ -47,37 +47,26 @@ class App extends React.Component {
 
   toggleCompleted(todoId) {
     for (let i = 0; i < this.state.todos.length; i++) {
+      let checkForCompletion = false;
       if (this.state.todos[i].id === todoId) {
         if (!(this.state.todos[i].isCompleted)) {
-          const patchOptions = {
-            method: 'PATCH',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-              isCompleted: true
-            })
-          };
-
-          fetch(`/api/todos/${todoId}`, patchOptions)
-            .then(todoId => todoId.json())
-            .then(todoId => {
-              this.getAllTodos();
-            });
-        } else {
-          const patchOptions = {
-            method: 'PATCH',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-              isCompleted: false
-            })
-          };
-
-          fetch(`/api/todos/${todoId}`, patchOptions)
-            .then(todoId => todoId.json())
-            .then(todoId => {
-              this.getAllTodos();
-            });
+          checkForCompletion = true;
         }
+        const patchOptions = {
+          method: 'PATCH',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            isCompleted: checkForCompletion
+          })
+        };
+
+        fetch(`/api/todos/${todoId}`, patchOptions)
+          .then(todoId => todoId.json())
+          .then(todoId => {
+            this.getAllTodos();
+          });
       }
+
     }
   }
 

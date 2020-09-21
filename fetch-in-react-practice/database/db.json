@@ -3,7 +3,7 @@
     {
       "id": 1,
       "task": "Learn to code.",
-      "isCompleted": true
+      "isCompleted": false
     },
     {
       "id": 3,
