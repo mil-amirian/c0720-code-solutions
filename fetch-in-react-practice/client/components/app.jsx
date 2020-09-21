@@ -38,10 +38,11 @@ class App extends React.Component {
       })
     };
     fetch('/api/todos', postOptions)
-      .then(newTodo => newTodo.json())
-      .then(newTodo => {
-        this.state.todos.push(newTodo);
-        this.getAllTodos();
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          todos: this.state.todos.concat(res)
+        });
       });
   }
 
@@ -61,9 +62,12 @@ class App extends React.Component {
         };
 
         fetch(`/api/todos/${todoId}`, patchOptions)
-          .then(todoId => todoId.json())
-          .then(todoId => {
-            this.getAllTodos();
+          .then(res => res.json())
+          .then(res => {
+            this.state.todos.splice(i, 1, res);
+            this.setState({
+              todos: this.state.todos
+            });
           });
       }
 
