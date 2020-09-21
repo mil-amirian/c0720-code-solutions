@@ -64,13 +64,13 @@ class App extends React.Component {
         fetch(`/api/todos/${todoId}`, patchOptions)
           .then(res => res.json())
           .then(res => {
-            this.state.todos.splice(i, 1, res);
+            const updatedTodos = this.state.todos.map(todo => todo);
+            updatedTodos.splice(i, 1, res);
             this.setState({
-              todos: this.state.todos
+              todos: updatedTodos
             });
           });
       }
-
     }
   }
 
