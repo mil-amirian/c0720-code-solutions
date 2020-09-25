@@ -61,13 +61,7 @@ app.post('/api/grades', (req, res) => {
   db.query(text, values)
     .then(result => {
       const grade = result.rows[0];
-      if (grade.length < 3) {
-        res.status(404).json({
-          error: 'Content must contain name, course and grade data'
-        });
-      } else {
-        res.json(grade);
-      }
+      res.status(201).json(grade);
     })
     .catch(err => {
     // eslint-disable-next-line no-console
