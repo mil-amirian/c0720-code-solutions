@@ -1,7 +1,6 @@
 const pg = require('pg');
 const express = require('express');
 const app = express();
-// const fs = require('fs');
 const useJson = express.json();
 
 app.use(useJson);
